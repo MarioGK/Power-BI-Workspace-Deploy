@@ -54,7 +54,14 @@ def main():
 
             print(response.status_code)
             print("---")
-            print(response.content)
+            print(response.json())
+            print("---")
+            #Request headers
+            print(response.request.headers)
+            print("---")
+            #Response headers
+            print(response.headers)
+            print("---")
 
             if response.status_code not in [200, 201, 202, 204]:
                 raise Exception("ERROR: " + response.status_code + ":response.content\nURL: " + response.url)
