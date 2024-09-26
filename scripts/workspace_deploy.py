@@ -48,8 +48,16 @@ def main():
                                             f"&nameConflict=CreateOrOverwrite"
                                         ), files=file_import, headers=token)
 
+            print(response.status_code)
+            print("---")
+            print(response)
+            print("---")
+            print(response.content)
+
             if response.status_code not in [200, 201, 202, 204]:
                 raise Exception(f"ERROR: {response.status_code}: {response.content}\nURL: {response.url}")
+        else:
+            print(f"File {file} not found or not a pbix file")
 
 
 if __name__ == '__main__':
