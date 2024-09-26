@@ -1,6 +1,6 @@
-name: 'Power BI Workspace Deploy'
-description: 'Deploy Thin PBIX file to target workspace'
-author: 'NAZ BeerTech BI Engineering'
+name: 'Power BI Workspace Deploy With More Logging'
+description: 'Deploy Thin PBIX file to target workspace (forked)'
+author: 'MarioGK'
 inputs:
   config_file:
     description: 'Location of config file'
