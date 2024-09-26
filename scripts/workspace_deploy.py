@@ -39,6 +39,10 @@ def main():
             file_name = os.path.basename(file)
             display_name = file_name.replace('_', ' ')
             workspace_id = cfg[workspace]['workspace_id']
+            if workspace_id is None:
+                print(f"Workspace {workspace} not found in config file")
+                raise Exception(f"Workspace {workspace} not found in config file")
+
             print('Deploying {} to {}'.format(file_name, workspace))
             file_import = {'file': open(file, 'rb')}
             response = requests.request("POST",
@@ -50,12 +54,10 @@ def main():
 
             print(response.status_code)
             print("---")
-            print(response)
-            print("---")
             print(response.content)
 
             if response.status_code not in [200, 201, 202, 204]:
-                raise Exception(f"ERROR: {response.status_code}: {response.content}\nURL: {response.url}")
+                raise Exception("ERROR: " + response.status_code + ":response.content\nURL: " + response.url)
         else:
             print(f"File {file} not found or not a pbix file")
 
